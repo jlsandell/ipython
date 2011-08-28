@@ -152,7 +152,7 @@ class HistoryManager(Configurable):
         with conn:
             cur = conn.execute("""INSERT INTO sessions VALUES (NULL, ?, NULL,
                             NULL, "") """, (datetime.datetime.now(),))
-            self.session_number = cur.lastrowid
+            self.session_number = int(cur.lastrowid)
             
     def end_session(self):
         """Close the database session, filling in the end time and line count."""
